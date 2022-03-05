@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  postgresql:
+    container_name: postgres
+    image: postgres:9.6-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - global-pg-data:/var/lib/postgresql/data
+
+  pgbouncer:
+    container_name: pgbouncer
+    image: bitnami/pgbouncer:latest
+    depends_on:
+      - "postgresql"
+    ports:
+      - "6432:6432"
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=postgres
+      - POSTGRESQL_HOST=postgresql
+      - POSTGRESQL_PORT=5432
+      - PGBOUNCER_POOL_MODE=session
+
+volumes:
+  global-pg-data:
