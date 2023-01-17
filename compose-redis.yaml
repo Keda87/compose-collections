@@ -10,6 +10,7 @@ services:
     command: redis-server --requirepass abc123
     volumes:
       - global-redis-data:/data
+    network_mode: "bridge"
 
 volumes:
   global-redis-data:

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  redash:
+    container_name: redash
+    image: redash:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - REDASH_SECRET_KEY=12662bf3-d45f-45cc-865c-7f5da8ee1c7b
+      - REDASH_COOKIE_SECRET=f5d226d5-a74e-4bb4-a1e2-58fbf6ea3b4b
+      - GOOGLE_CLIENT_ID=
+    network_mode: "bridge"

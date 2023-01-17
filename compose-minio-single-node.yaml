@@ -13,6 +13,7 @@ services:
       - "9000:9000"
       - "9001:9001"
     command: server /data --console-address ":9001"
+    network_mode: "bridge"
 
 volumes:
   minio-data:

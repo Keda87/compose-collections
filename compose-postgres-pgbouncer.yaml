@@ -13,6 +13,7 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - global-pg-data:/var/lib/postgresql/data
+    network_mode: "bridge"
 
   pgbouncer:
     container_name: pgbouncer
@@ -28,6 +29,7 @@ services:
       - POSTGRESQL_HOST=postgresql
       - POSTGRESQL_PORT=5432
       - PGBOUNCER_POOL_MODE=session
+    network_mode: "bridge"
 
 volumes:
   global-pg-data:

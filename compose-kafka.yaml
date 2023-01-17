@@ -7,6 +7,8 @@ services:
       - '2181:2181'
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    network_mode: "bridge"
+
   kafka:
     container_name: kafka
     image: 'bitnami/kafka:latest'
@@ -20,3 +22,4 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
+    network_mode: "bridge"

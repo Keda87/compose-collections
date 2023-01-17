@@ -11,6 +11,7 @@ services:
         - 15672:15672
     networks:
         - rabbitmq_net
+    network_mode: "bridge"
 
 networks:
   rabbitmq_net:
